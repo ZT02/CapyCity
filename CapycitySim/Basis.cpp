@@ -8,7 +8,7 @@ class CapycitySim {
 private:
 	int rowsG, colsG;
 	Building** matrix;
-	//output
+
 
 public:
 	CapycitySim() {
@@ -254,6 +254,6 @@ int main() {
 	while (run) {
 		run = test.buildmenu();
 	}
-	
+
 	return 1;
 }

@@ -15,13 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Materialien.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="Bauelemente.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="Basis.cpp">
+    <ClCompile Include="..\Capycity\Basis1.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
