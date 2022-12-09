@@ -1,4 +1,0 @@
-﻿  Basis1.cpp
-C:\Users\Studying Markus L\source\repos\Capycity\CapycitySim\Basis1.cpp(28,1): warning C4267: "=": Konvertierung von "size_t" nach "int", Datenverlust möglich
-C:\Users\Studying Markus L\source\repos\Capycity\CapycitySim\Basis1.cpp(34,1): warning C4267: "Initialisierung": Konvertierung von "size_t" nach "int", Datenverlust möglich
-  CapycitySim.vcxproj -> C:\Users\Studying Markus L\source\repos\Capycity\x64\Debug\CapycitySim.exe
