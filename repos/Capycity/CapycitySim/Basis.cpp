@@ -246,7 +246,7 @@ public:
 
 
 int main() {
-	cout << Wasserkraftwerk().mats[0].getLabel() << endl;
+	
 	CapycitySim test = CapycitySim();
 	bool run = true;
 
