@@ -83,12 +83,12 @@ public:
 
 		//Eingabe pruefen
 		if ((pos_x + length) > colsG || pos_y + width > rowsG || pos_x < 0 || pos_y < 0) {
-			cout << "Loeschbereich liegt außerhalb des Baubereichs. Versuch es nochmal" << endl;
+			cout << "Loeschbereich liegt auÃŸerhalb des Baubereichs. Versuch es nochmal" << endl;
 			deleteArea();
 			return;
 		}
 
-		//Löschen -> Feld durch "Empty" Feld ersetzen
+		//Loeschen -> Feld durch "Empty" Feld ersetzen
 		for (int i = 0; i < length; i++) {
 			for (int x = 0; x < width; x++)
 				if (matrix[i + pos_y][x + pos_x] != 0)
@@ -113,7 +113,7 @@ public:
 
 		//Eingabepruefung
 		if (buildType > 4 - 1 || buildType <= 0) {
-			cout << "Kein gueltiger Gebaeudetyp wurde ausgewählt!" << endl;
+			cout << "Kein gueltiger Gebaeudetyp wurde ausgewÃ¤hlt!" << endl;
 			build();
 			return;
 		}
@@ -151,7 +151,7 @@ public:
 	void deleteCity() {
 		cout << "Deleting city..... Bye Capybara.... :( " << endl;
 
-		//unsere matrix löschen
+		//unsere matrix loeschen
 		for (int i = 0; i < rowsG; ++i)
 			delete[] matrix[i];
 
