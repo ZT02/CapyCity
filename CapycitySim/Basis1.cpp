@@ -212,7 +212,6 @@ public:
 
 
 int main() {
-	
 	CapycitySim test = CapycitySim();
 	bool run = true;
 
