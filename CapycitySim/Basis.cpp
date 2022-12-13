@@ -66,7 +66,7 @@ public:
 						if (Gebaeude[y].Label != "leer") { //Gebauede gleichzeitg zaehlen, "leer" = freies Feld -> nicht zaehlen
 							allMats[0][y]++;
 							gesamtPreis += Gebaeude[y].Grundpreis; //Preis und Gesamtpreis addieren
-							for (int z = 0; z < matrix[i][x].mats.size(); z++) { //Materialien für Gebaeude zaehlen -> In Tabelle schreiben, Preis auch auf Gesamtpreis addieren
+							for (int z = 0; z < matrix[i][x].mats.size(); z++) { //Materialien fuer Gebaeude zaehlen -> In Tabelle schreiben, Preis auch auf Gesamtpreis addieren
 								string po = matrix[i][x].mats[z].getLabel();
 
 								if (po == "Holz") {
@@ -96,11 +96,11 @@ public:
 			cout << " " << allMats[3][i] << "x: Kunststoff\n" << endl;
 		}
 
-		//Gesamtpreis für Capycity : )
+		//Gesamtpreis fuer Capycity : )
 		cout << "-----------------\n" << "Gesamtpreis -> " << gesamtPreis << "\n-----------------" << endl;
 		cout << endl;
 
-		//Matrix wieder löschen die oben erstellt wurde
+		//Matrix wieder loeschen die oben erstellt wurde
 		for (int i = 0; i < 4; i++)
 			delete[] allMats[i];
 
@@ -117,12 +117,12 @@ public:
 
 		//Eingabe pruefen
 		if ((pos_x + length) > colsG || pos_y + width > rowsG || pos_x < 0 || pos_y < 0) {
-			cout << "Loeschbereich liegt außerhalb des Baubereichs. Versuch es nochmal" << endl;
+			cout << "Loeschbereich liegt ausserhalb des Baubereichs. Versuch es nochmal" << endl;
 			deleteArea();
 			return;
 		}
 
-		//Löschen -> Feld durch "Empty" Feld ersetzen
+		//Loeschen -> Feld durch "Empty" Feld ersetzen
 		for (int i = 0; i < length; i++) {
 			for (int x = 0; x < width; x++)
 				if (matrix[i + pos_y][x + pos_x].Label != Empty().Label)
@@ -147,14 +147,14 @@ public:
 
 		//Eingabepruefung
 		if (buildType > sizeof(Gebaeude) / sizeof(Building) - 1 || buildType <= 0) {
-			cout << "Kein gueltiger Gebäudetyp wurde ausgewählt!" << endl;
+			cout << "Kein gueltiger Gebaeudetyp wurde ausgewaehlt!" << endl;
 			build();
 			return;
 		}
 
 
 		if ((pos_x + length) > colsG || pos_y + width > rowsG || pos_x < 0 || pos_y < 0) {
-			cout << "Gebaeudebereich liegt außerhalb des Baubereichs. Versuch es nochmal" << endl;
+			cout << "Gebaeudebereich liegt ausserhalb des Baubereichs. Versuch es nochmal" << endl;
 			build();
 			return;
 		}
@@ -185,7 +185,7 @@ public:
 	void deleteCity() {
 		cout << "Deleting city..... Bye Capybara.... :( " << endl;
 
-		//unsere matrix löschen
+		//unsere matrix loeschen
 		for (int i = 0; i < rowsG; ++i)
 			delete[] matrix[i];
 
@@ -246,7 +246,6 @@ public:
 
 
 int main() {
-	cout << Wasserkraftwerk().mats[0].getLabel() << endl;
 	CapycitySim test = CapycitySim();
 	bool run = true;
 
