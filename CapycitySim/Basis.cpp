@@ -66,38 +66,48 @@ void CapycitySim::blueprint() const {
 		}
 	}
 
-	//Ausgabe
-	//Matrix durchlaufen
-	cout << endl;
-	for (int i = 0; i < rowsG; i++) {
-		for (int x = 0; x < colsG; x++) {
-			for (int y = 0; y < sizeof(Gebaeude) / sizeof(Building); y++)
-				if (matrix[i][x].getLabel() == Gebaeude[y].getLabel()) {
-					cout << labelListWithPadding[y]; //Asugabe Label mit Padding
-						allMats[0][y]++;
-						gesamtPreis += Gebaeude[y].getGrundpreis(); //Preis und Gesamtpreis addieren
-						auto po = Gebaeude[y].getMats();
-						//Materialien fuer Gebaeude zaehlen -> In Tabelle schreiben, Preis auch auf Gesamtpreis addieren
-						//Materialkosten auch zu Gesamtpreis addieren
-						allMats[1][y] += po.at(Holz());
-						gesamtPreis += (Holz().getPreis() * po.at(Holz()));
-						allMats[2][y] += po.at(Metall());
-						gesamtPreis += (Metall().getPreis() * po.at(Metall()));
-						allMats[3][y] += po.at(Kunststoff());
-						gesamtPreis += (Kunststoff().getPreis() * po.at(Kunststoff()));
-				
-				}
-		}
-		cout << "\n" << endl;
-	}
 
-	//Ausgabe Anzahl der jeweiligen Gebaeudeart + Gebaeudelabel + Einzel preis, dann Gesamtmaterialien diese Gebaeudeart (insgesamt, nicht einzeln)
-	for (int i = 0; i < sizeof(Gebaeude) / sizeof(Building); i++) {
-		cout << allMats[0][i] << "x: " << Gebaeude[i].getLabel() << ": Einzelpreis -> " << Gebaeude[i].getGrundpreis() << endl;
-		cout << "Materialien:\n" << " " << allMats[1][i] << "x: Holz" << endl;
-		cout << " " << allMats[2][i] << "x: Metall" << endl;
-		cout << " " << allMats[3][i] << "x: Kunststoff\n" << endl;
-	}
+
+		//Ausgabe
+		//Matrix durchlaufen
+		cout << endl;
+		for (int i = 0; i < rowsG; i++) {
+			for (int x = 0; x < colsG; x++) {
+				for (int y = 0; y < sizeof(Gebaeude) / sizeof(Building); y++)
+					if (matrix[i][x].Label == Gebaeude[y].Label) {
+						cout << labelListWithPadding[y]; //Asugabe Label mit Padding
+						if (Gebaeude[y].Label != "leer") { //Gebauede gleichzeitg zaehlen, "leer" = freies Feld -> nicht zaehlen
+							allMats[0][y]++;
+							gesamtPreis += Gebaeude[y].Grundpreis; //Preis und Gesamtpreis addieren
+							for (int z = 0; z < matrix[i][x].mats.size(); z++) { //Materialien fuer Gebaeude zaehlen -> In Tabelle schreiben, Preis auch auf Gesamtpreis addieren
+								string po = matrix[i][x].mats[z].getLabel();
+
+								if (po == "Holz") {
+									allMats[1][y] += 1;
+									gesamtPreis += Holz().getPreis();
+								}
+								else if (po == "Metall") {
+									allMats[2][y] += 1;
+									gesamtPreis += Metall().getPreis();
+								}
+								else if (po == "Kunststoff") {
+									allMats[3][y] += 1;
+									gesamtPreis += Kunststoff().getPreis();
+								}
+							}
+						}
+					}
+			}
+			cout << "\n" << endl;
+		}
+
+		//Ausgabe Anzahl der jeweiligen Gebaeudeart + Gebaeudelabel + Einzel preis, dann Gesamtmaterialien diese Gebaeudeart (insgesamt, nicht einzeln)
+		for (int i = 1; i < sizeof(Gebaeude) / sizeof(Building); i++) {
+			cout << allMats[0][i] << "x: " << Gebaeude[i].Label << ": Einzelpreis -> " << Gebaeude[i].Grundpreis << endl;
+			cout << "Materialien:\n" << " " << allMats[1][i] << "x: Holz" << endl;
+			cout << " " << allMats[2][i] << "x: Metall" << endl;
+			cout << " " << allMats[3][i] << "x: Kunststoff\n" << endl;
+		}
 
 	//Gesamtpreis fuer Capycity : )
 	cout << "-----------------\n" << "Gesamtpreis -> " << gesamtPreis << "\n-----------------" << endl;
@@ -267,14 +277,13 @@ bool CapycitySim::Funktor(const CapycitySim& anderer) const {
 
 int main() {
 	CapycitySim test = CapycitySim();
-	Kunststoff test2;
-	int i = Solarpanele().getMats()[Kunststoff()];
-	cout << i << endl;
 	bool run = true;
 	
 	//run ist bei delete Auswahl in Menu negativ -> Abbruch
 	while (run) {
 		run = test.buildmenu();
+		test2.buildmenu();
+		test.Funktor(test2);
 	}
 
 	return 1;

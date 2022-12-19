@@ -13,41 +13,35 @@ private:
 
 public:
 	Building() { Grundpreis = 0; Label = "leer"; }
-	Building(int Grundpreis, string Label, map<Material, int> mats) : Grundpreis(Grundpreis), Label(Label), mats(mats) {}
-	virtual int getGrundpreis() const{
-		return Grundpreis;
-	}
-	virtual string getLabel() const{
-		return Label;
-	}
-	virtual map<Material, int> getMats() const{
-		return mats;
-	}
-
+	Building(int Grundpreis, string Label, vector<Material> mats) : Grundpreis(Grundpreis), Label(Label), mats(mats) {}
+	
 };
 
 class Empty : public Building {
 public:
-	Empty() : Building(0, "leer", map<Material, int> {{Holz(), 0}, {Metall(), 0}, {Kunststoff(), 0}}) {}
+	Empty() : Building(0, "leer", {Material()}) {}
+	
+	
+
 };
 
 class Wasserkraftwerk : public Building {
 public:
-	Wasserkraftwerk() : Building(1000, "Wasserkraftwerk", map<Material, int>{ {Holz(), 1}, {Metall(), 2}, {Kunststoff(), 1}}) {
+	Wasserkraftwerk() : Building(1000, "Wasserkraftwerk", { Metall(), Metall(), Holz(), Kunststoff() }) {
 	}
 	
 
 };
 
-class Windkraftwerk : public Building {
+struct Windkraftwerk : public Building {
 public:
-	Windkraftwerk() : Building(500, "Windkraftwerk", map<Material, int>{ {Holz(), 2}, {Metall(), 0}, {Kunststoff(), 1}}) {
+	Windkraftwerk() : Building(500, "Windkraftwerk", {Holz(), Holz(), Kunststoff()}) {
 	}
 }; 
 
-class Solarpanele : public Building {
+struct Solarpanele : public Building {
 public:
-	Solarpanele() : Building(50, "SolarPanele", map<Material, int>{ {Holz(), 0}, {Metall(), 1}, {Kunststoff(), 2}}) {
+	Solarpanele() : Building(50, "SolarPanele", { Metall(), Kunststoff(), Kunststoff() }) {
 	}
 	
 };
