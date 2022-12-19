@@ -72,7 +72,7 @@ void CapycitySim::blueprint() const {
 	for (int i = 0; i < rowsG; i++) {
 		for (int x = 0; x < colsG; x++) {
 			for (int y = 0; y < sizeof(Gebaeude) / sizeof(Building); y++)
-				if (matrix[i][x].getLabel() == Gebaeude[y].getLabel()) { //Label mit Padding w‰hlen
+				if (matrix[i][x].getLabel() == Gebaeude[y].getLabel()) { //Label mit Padding waehlen
 					cout << labelListWithPadding[y]; //Ausgabe Label mit Padding
 						allMats[0][y]++;
 						gesamtPreis += Gebaeude[y].getGrundpreis(); //Preis und Gesamtpreis addieren
@@ -246,7 +246,7 @@ void CapycitySim::defineSize() {
 
 
 bool CapycitySim::Funktor(const CapycitySim& anderer) const {
-	//Reihen, Spalten unterschiedliche Groesse?-> Andere Pl‰ne
+	//Reihen, Spalten unterschiedliche Groesse?-> Andere Pl√§ne
 	if (rowsG != anderer.rowsG || colsG != anderer.rowsG) {
 		cout << "--------\nBauplaene sind nicht identisch\n--------" << endl;
 		return false;
