@@ -19,7 +19,7 @@ public:
 	void build();
 	void defineSize();
 	bool Funktor(const CapycitySim& anderer) const;
-	
+
 };
 
 
@@ -72,21 +72,19 @@ void CapycitySim::blueprint() const {
 	for (int i = 0; i < rowsG; i++) {
 		for (int x = 0; x < colsG; x++) {
 			for (int y = 0; y < sizeof(Gebaeude) / sizeof(Building); y++)
-				if (matrix[i][x].getLabel() == Gebaeude[y].getLabel()) {
-					cout << labelListWithPadding[y]; //Asugabe Label mit Padding
-					if (Gebaeude[y].getLabel() != "leer") { //Gebauede gleichzeitg zaehlen, "leer" = freies Feld -> nicht zaehlen
+				if (matrix[i][x].getLabel() == Gebaeude[y].getLabel()) { //Label mit Padding waehlen
+					cout << labelListWithPadding[y]; //Ausgabe Label mit Padding
 						allMats[0][y]++;
 						gesamtPreis += Gebaeude[y].getGrundpreis(); //Preis und Gesamtpreis addieren
 						auto po = Gebaeude[y].getMats();
 						//Materialien fuer Gebaeude zaehlen -> In Tabelle schreiben, Preis auch auf Gesamtpreis addieren
-						   //Materialkosten auch zu Gesamtpreis addieren
+						//Materialkosten auch zu Gesamtpreis addieren
 						allMats[1][y] += po.at(Holz());
 						gesamtPreis += (Holz().getPreis() * po.at(Holz()));
 						allMats[2][y] += po.at(Metall());
 						gesamtPreis += (Metall().getPreis() * po.at(Metall()));
 						allMats[3][y] += po.at(Kunststoff());
 						gesamtPreis += (Kunststoff().getPreis() * po.at(Kunststoff()));
-						}
 				}
 		}
 		cout << "\n" << endl;
@@ -99,9 +97,13 @@ void CapycitySim::blueprint() const {
 		cout << " " << allMats[2][i] << "x: Metall" << endl;
 		cout << " " << allMats[3][i] << "x: Kunststoff\n" << endl;
 	}
+		cout << "Materialien:\n" << " " << allMats[1][i] << "x: Holz" << endl;
+		cout << " " << allMats[2][i] << "x: Metall" << endl;
+		cout << " " << allMats[3][i] << "x: Kunststoff\n" << endl;
+	}
 
 	//Gesamtpreis fuer Capycity : )
-	cout << "-----------------\n" << "Gesamtpreis -> " << gesamtPreis << "\n-----------------" << endl;
+	cout << "-----------------\n" << "Gesamtkosten -> " << gesamtPreis << "\n-----------------" << endl;
 	cout << endl;
 
 	//Matrix wieder loeschen die oben erstellt wurde
@@ -244,7 +246,7 @@ void CapycitySim::defineSize() {
 
 
 bool CapycitySim::Funktor(const CapycitySim& anderer) const {
-	//Reihen, Spalten unterschiedliche Groesse?-> Andere Pl‰ne
+	//Reihen, Spalten unterschiedliche Groesse?-> Andere Pl√§ne
 	if (rowsG != anderer.rowsG || colsG != anderer.rowsG) {
 		cout << "--------\nBauplaene sind nicht identisch\n--------" << endl;
 		return false;
@@ -268,15 +270,11 @@ bool CapycitySim::Funktor(const CapycitySim& anderer) const {
 
 int main() {
 	CapycitySim test = CapycitySim();
-	CapycitySim test2 = CapycitySim();
-	
 	bool run = true;
 
 	//run ist bei delete Auswahl in Menu negativ -> Abbruch
 	while (run) {
 		run = test.buildmenu();
-		test2.buildmenu();
-		test.Funktor(test2);
 	}
 
 	return 1;
