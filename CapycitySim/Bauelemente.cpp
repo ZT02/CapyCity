@@ -28,14 +28,14 @@ public:
 
 class Empty : public Building {
 public:
-	Empty() : Building(0, "leer", map<Material, int> {{Holz(), 0}, {Metall(), 0}, {Kunststoff(), 0}}) {}
+	Empty() : Building(0, "leer", map<Material, int> { {Holz(), 0}, {Metall(), 0}, {Kunststoff(), 0}}) {}
 };
 
 class Wasserkraftwerk : public Building {
 public:
 	Wasserkraftwerk() : Building(1000, "Wasserkraftwerk", map<Material, int>{ {Holz(), 1}, {Metall(), 2}, {Kunststoff(), 1}}) {
 	}
-	
+
 
 };
 
@@ -43,14 +43,11 @@ class Windkraftwerk : public Building {
 public:
 	Windkraftwerk() : Building(500, "Windkraftwerk", map<Material, int>{ {Holz(), 2}, {Metall(), 0}, {Kunststoff(), 1}}) {
 	}
-}; 
+};
 
 class Solarpanele : public Building {
 public:
 	Solarpanele() : Building(50, "SolarPanele", map<Material, int>{ {Holz(), 0}, {Metall(), 1}, {Kunststoff(), 2}}) {
 	}
-	
+
 };
-
-
-

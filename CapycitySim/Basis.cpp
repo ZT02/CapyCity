@@ -19,7 +19,7 @@ public:
 	void build();
 	void defineSize();
 	bool Funktor(const CapycitySim& anderer) const;
-	
+
 };
 
 
@@ -72,8 +72,8 @@ void CapycitySim::blueprint() const {
 	for (int i = 0; i < rowsG; i++) {
 		for (int x = 0; x < colsG; x++) {
 			for (int y = 0; y < sizeof(Gebaeude) / sizeof(Building); y++)
-				if (matrix[i][x].getLabel() == Gebaeude[y].getLabel()) {
-					cout << labelListWithPadding[y]; //Asugabe Label mit Padding
+				if (matrix[i][x].getLabel() == Gebaeude[y].getLabel()) { //Label mit Padding wählen
+					cout << labelListWithPadding[y]; //Ausgabe Label mit Padding
 						allMats[0][y]++;
 						gesamtPreis += Gebaeude[y].getGrundpreis(); //Preis und Gesamtpreis addieren
 						auto po = Gebaeude[y].getMats();
@@ -85,14 +85,13 @@ void CapycitySim::blueprint() const {
 						gesamtPreis += (Metall().getPreis() * po.at(Metall()));
 						allMats[3][y] += po.at(Kunststoff());
 						gesamtPreis += (Kunststoff().getPreis() * po.at(Kunststoff()));
-				
 				}
 		}
 		cout << "\n" << endl;
 	}
 
 	//Ausgabe Anzahl der jeweiligen Gebaeudeart + Gebaeudelabel + Einzel preis, dann Gesamtmaterialien diese Gebaeudeart (insgesamt, nicht einzeln)
-	for (int i = 0; i < sizeof(Gebaeude) / sizeof(Building); i++) {
+	for (int i = 1; i < sizeof(Gebaeude) / sizeof(Building); i++) {
 		cout << allMats[0][i] << "x: " << Gebaeude[i].getLabel() << ": Einzelpreis -> " << Gebaeude[i].getGrundpreis() << endl;
 		cout << "Materialien:\n" << " " << allMats[1][i] << "x: Holz" << endl;
 		cout << " " << allMats[2][i] << "x: Metall" << endl;
@@ -100,7 +99,7 @@ void CapycitySim::blueprint() const {
 	}
 
 	//Gesamtpreis fuer Capycity : )
-	cout << "-----------------\n" << "Gesamtpreis -> " << gesamtPreis << "\n-----------------" << endl;
+	cout << "-----------------\n" << "Gesamtkosten -> " << gesamtPreis << "\n-----------------" << endl;
 	cout << endl;
 
 	//Matrix wieder loeschen die oben erstellt wurde
@@ -267,11 +266,8 @@ bool CapycitySim::Funktor(const CapycitySim& anderer) const {
 
 int main() {
 	CapycitySim test = CapycitySim();
-	Kunststoff test2;
-	int i = Solarpanele().getMats()[Kunststoff()];
-	cout << i << endl;
 	bool run = true;
-	
+
 	//run ist bei delete Auswahl in Menu negativ -> Abbruch
 	while (run) {
 		run = test.buildmenu();
