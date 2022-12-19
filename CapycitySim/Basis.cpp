@@ -97,6 +97,10 @@ void CapycitySim::blueprint() const {
 		cout << " " << allMats[2][i] << "x: Metall" << endl;
 		cout << " " << allMats[3][i] << "x: Kunststoff\n" << endl;
 	}
+		cout << "Materialien:\n" << " " << allMats[1][i] << "x: Holz" << endl;
+		cout << " " << allMats[2][i] << "x: Metall" << endl;
+		cout << " " << allMats[3][i] << "x: Kunststoff\n" << endl;
+	}
 
 	//Gesamtpreis fuer Capycity : )
 	cout << "-----------------\n" << "Gesamtkosten -> " << gesamtPreis << "\n-----------------" << endl;
