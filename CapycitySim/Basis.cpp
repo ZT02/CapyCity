@@ -1,7 +1,6 @@
 #include <iostream>
 #include "../CapycitySim/Bauelemente.cpp"
 #include <map>
-using namespace std;
 class Material;
 Building Gebaeude[] = { Empty(), Wasserkraftwerk(), Windkraftwerk(), Solarpanele() };
 class CapycitySim {
@@ -93,10 +92,6 @@ void CapycitySim::blueprint() const {
 	//Ausgabe Anzahl der jeweiligen Gebaeudeart + Gebaeudelabel + Einzel preis, dann Gesamtmaterialien diese Gebaeudeart (insgesamt, nicht einzeln)
 	for (int i = 1; i < sizeof(Gebaeude) / sizeof(Building); i++) {
 		cout << allMats[0][i] << "x: " << Gebaeude[i].getLabel() << ": Einzelpreis -> " << Gebaeude[i].getGrundpreis() << endl;
-		cout << "Materialien:\n" << " " << allMats[1][i] << "x: Holz" << endl;
-		cout << " " << allMats[2][i] << "x: Metall" << endl;
-		cout << " " << allMats[3][i] << "x: Kunststoff\n" << endl;
-	}
 		cout << "Materialien:\n" << " " << allMats[1][i] << "x: Holz" << endl;
 		cout << " " << allMats[2][i] << "x: Metall" << endl;
 		cout << " " << allMats[3][i] << "x: Kunststoff\n" << endl;
