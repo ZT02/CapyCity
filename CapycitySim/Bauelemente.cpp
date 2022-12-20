@@ -1,8 +1,7 @@
 #include <iostream>
 #include "Materialien.cpp"
 #include <map>
-using namespace std;
-//Ich habe mich fuer Carlas Idee entschieden da diese einfach zu implementieren ist, auﬂerdem spare ich mir eine Extra Klasse fuer die Verwaltung.
+//Ich habe mich fuer Carlas Idee entschieden da diese einfach zu implementieren ist, au√üerdem spare ich mir eine Extra Klasse fuer die Verwaltung.
 //Zuviele Klassen sind unuebersichtlich, andererseits waere es gut verschiedene Funktionen zu trennen.
 class Building {
 
