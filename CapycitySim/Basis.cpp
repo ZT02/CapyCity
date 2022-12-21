@@ -270,15 +270,12 @@ public:
 					cout << "--------\nBauplaene sind nicht identisch\n--------" << endl;
 					return false;
 				}
-
 			}
 			cout << "\n" << endl;
 		}
 		cout << "--------\nBauplaene sind identisch\n--------" << endl;
 		return true;
 	}
-
-
 };
 
 
