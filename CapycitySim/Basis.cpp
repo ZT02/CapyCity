@@ -17,8 +17,9 @@ public:
 	bool buildmenu();
 	void build();
 	void defineSize();
-	bool Funktor(const CapycitySim& anderer) const;
-
+	int getRowsG();
+	int getColsG();
+	Building** getMatrix();
 };
 
 
@@ -239,37 +240,58 @@ void CapycitySim::defineSize() {
 	}
 }
 
-
-bool CapycitySim::Funktor(const CapycitySim& anderer) const {
-	//Reihen, Spalten unterschiedliche Groesse?-> Andere Pläne
-	if (rowsG != anderer.rowsG || colsG != anderer.rowsG) {
-		cout << "--------\nBauplaene sind nicht identisch\n--------" << endl;
-		return false;
-	}
-
-	//Bauplaene selbe Groesse? -> Felder einzeln ueberpruefen
-	for (int i = 0; i < rowsG; i++) {
-		for (int x = 0; x < colsG; x++) {
-			if (matrix[i][x].getLabel() != anderer.matrix[i][x].getLabel()) {
-				cout << "--------\nBauplaene sind nicht identisch\n--------" << endl;
-				return false;
-			}
-
-		}
-		cout << "\n" << endl;
-	}
-	cout << "--------\nBauplaene sind identisch\n--------" << endl;
-	return true;
+int CapycitySim::getRowsG() {
+	return rowsG;
 }
+
+int CapycitySim::getColsG() {
+	return colsG;
+}
+
+Building** CapycitySim::getMatrix() {
+	return matrix;
+}
+
+
+//Funktor
+class equals {
+
+public:
+	bool operator()(CapycitySim& simOne, CapycitySim& simTwo){
+		if (simOne.getRowsG() != simTwo.getRowsG() || simOne.getColsG() != simTwo.getRowsG()) {
+			cout << "--------\nBauplaene sind nicht identisch\n--------" << endl;
+			return false;
+		}
+
+		//Bauplaene selbe Groesse? -> Felder einzeln ueberpruefen
+		for (int i = 0; i < simOne.getRowsG(); i++) {
+			for (int x = 0; x < simOne.getColsG(); x++) {
+				if (simOne.getMatrix()[i][x].getLabel() != simTwo.getMatrix()[i][x].getLabel()) {
+					cout << "--------\nBauplaene sind nicht identisch\n--------" << endl;
+					return false;
+				}
+			}
+			cout << "\n" << endl;
+		}
+		cout << "--------\nBauplaene sind identisch\n--------" << endl;
+		return true;
+	}
+};
 
 
 int main() {
 	CapycitySim test = CapycitySim();
-	bool run = true;
+	CapycitySim test2 = CapycitySim();
 
+	//Funktor test
+	equals functor;
+
+	bool run = true;
 	//run ist bei delete Auswahl in Menu negativ -> Abbruch
 	while (run) {
 		run = test.buildmenu();
+		test2.buildmenu();
+		functor(test, test2);
 	}
 
 	return 1;
