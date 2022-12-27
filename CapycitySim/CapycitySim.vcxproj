@@ -128,8 +128,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bauelemente.cpp" />
+    <ClCompile Include="Blueprint.cpp" />
     <ClCompile Include="Materialien.cpp" />
     <ClCompile Include="Basis.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Bas.h" />
+    <ClInclude Include="Blue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
