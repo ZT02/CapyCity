@@ -10,9 +10,9 @@ public:
 		return (this->Preis < t.Preis);
 	}
 	Material() { Preis = 0; }
-	 Material(int Preis, string Label) : Preis(Preis), Label(Label){};
-	 virtual int getPreis() { return Preis; };
-	 virtual string getLabel() { return Label; };
+	 Material(int Preis, string Label) : Preis(Preis), Label(Label){}
+	 virtual int getPreis() { return Preis; }
+	 virtual string getLabel() { return Label; }
 };
 
 
