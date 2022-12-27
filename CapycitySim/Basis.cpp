@@ -1,6 +1,11 @@
 #include "bas.h"
 using namespace std;
 
+//Konstruktor
+CapycitySim::CapycitySim() { plaene = vector<Blueprint>();
+	newBlueprint();
+}
+
 //Bauplan loeschen 
 void CapycitySim::deleteBlueprint(int pos) {
 	plaene[pos].deleteBlue();
