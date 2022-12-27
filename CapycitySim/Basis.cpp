@@ -109,32 +109,6 @@ bool CapycitySim::buildmenu() {
 }
 
 
-//Funktor
-class equals {
-
-public:
-	bool operator()(CapycitySim& simOne, CapycitySim& simTwo) {
-		if (simOne.getRowsG() != simTwo.getRowsG() || simOne.getColsG() != simTwo.getRowsG()) {
-			cout << "--------\nBauplaene sind nicht identisch\n--------" << endl;
-			return false;
-		}
-
-		//Bauplaene selbe Groesse? -> Felder einzeln ueberpruefen
-		for (int i = 0; i < simOne.getRowsG(); i++) {
-			for (int x = 0; x < simOne.getColsG(); x++) {
-				if (simOne.getMatrix()[i][x].getLabel() != simTwo.getMatrix()[i][x].getLabel()) {
-					cout << "--------\nBauplaene sind nicht identisch\n--------" << endl;
-					return false;
-				}
-			}
-			cout << "\n" << endl;
-		}
-		cout << "--------\nBauplaene sind identisch\n--------" << endl;
-		return true;
-	}
-};
-
-
 int main() {
 	CapycitySim test = CapycitySim();
 
@@ -147,4 +121,6 @@ int main() {
 
 	return 1;
 }
+
+
 
